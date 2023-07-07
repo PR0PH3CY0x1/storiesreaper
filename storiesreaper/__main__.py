@@ -1,5 +1,7 @@
 from config.config import read_data
 
+from storiesreaper.banner.banner import init
+
 from storiesreaper.utils.loader import loader
 from storiesreaper.utils.profile import profile
 from storiesreaper.utils.stories import collect
@@ -11,6 +13,8 @@ def main():
     args = parser(
 
     )
+
+    init()
 
     config = read_data(
         args.path
@@ -30,6 +34,10 @@ def main():
         loader_,
         profile_,
         config['path']
+    )
+
+    print(
+        f"{COLORS['SCANNER']}COLLECTING STOIRES: {config['username']} | {args.username}"
     )
 
 
